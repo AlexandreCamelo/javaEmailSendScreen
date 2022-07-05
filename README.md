@@ -22,13 +22,13 @@ I used Postgresql. You can use this same database, filling in your information i
 <br/><br/>
 <h3>fun facts</h3>
 1) Whenever you send an email, the system will automatically send the same email to your own account. This is to compensate for the fact that emails are not received and attachments are not stored. They will be stored at your email provider. <strong>Contributions to add RECEIVING and STORING messages are welcome.</strong>
-<br/>
+<br/><br/>
 2) For each email sent, a record will be added to the postgresql database. The basic information of the email will be saved: from, to, cc, cc, attachment names (strings, not Files), body and sending date/time. You may use this information however you wish on your systems;
-<br/>
+<br/><br/>
 3) The signature, in the footer of the email, can be modified (only for the current email) by clicking on the button below it;
-<br/>
+<br/><br/>
 4) You can choose to open the email screen, with some fields already filled in, or open it blank. See the start.java file;
-<br/>
+<br/><br/>
 5) The to, Cc and Bcc fields are of the “autocomplete” type. Emails can be added using the “Add if not on the list” button. After that, in the next messages, the added email will appear in the autocomplete;
-<br/>
+<br/><br/>
 6) Attached files are deleted from your computer/server at the time the email is sent.
