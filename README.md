@@ -21,7 +21,7 @@ I used Postgresql. You can use this same database, filling in your information i
 
 <br/><br/>
 <h3>fun facts</h3>
-1) Whenever you send an email, the system will automatically send the same email to your own account. This is to compensate for the fact that emails are not received and attachments are not stored. They will be stored at your email provider. <h5>Contributions to add RECEIVING and STORING messages are welcome.</h5>
+1) Whenever you send an email, the system will automatically send the same email to your own account. This is to compensate for the fact that emails are not received and attachments are not stored. They will be stored at your email provider. <strong>Contributions to add RECEIVING and STORING messages are welcome.</strong>
 2) For each email sent, a record will be added to the postgresql database. The basic information of the email will be saved: from, to, cc, cc, attachment names (strings, not Files), body and sending date/time. You may use this information however you wish on your systems;
 3) The signature, in the footer of the email, can be modified (only for the current email) by clicking on the button below it;
 4) You can choose to open the email screen, with some fields already filled in, or open it blank. See the start.java file;
