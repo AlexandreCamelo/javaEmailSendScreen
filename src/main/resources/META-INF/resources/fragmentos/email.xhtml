@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+
+	<style>
+.labelCabecalho {
+	width: 70px !important;
+	border: 1px solid #FFF;
+}
+
+.ui-dialog {
+	width: 95% !important;
+}
+
+.iconeArquivo {
+	background-size: cover;
+	/* 	height: 20em; */
+	/* 	width: 20em; */
+	height: 35px !important;
+	width: 35px !important;
+	position: relative;
+	top: 20% !important;
+	background-image: url('imagens/clipeCinza.png') !important;
+	background-repeat: no-repeat;
+}
+
+.iconeClipe {
+	background-size: cover;
+	height: 20px !important;
+	width: 20px !important;
+	position: relative;
+	top: 40% !important;
+	background-image: url('imagens/clipe.png') !important;
+	background-repeat: no-repeat;
+}
+
+.iconeCancelar {
+	background-size: cover;
+	height: 20px !important;
+	width: 20px !important;
+	position: relative;
+	top: 50% !important;
+	background-image: url('imagens/cancelar.png') !important;
+	background-repeat: no-repeat;
+}
+
+.iconeCancelarMenor {
+	background-size: cover;
+	height: 15px !important;
+	width: 15px !important;
+	position: relative;
+	top: 50% !important;
+	background-image: url('imagens/cancelar.png') !important;
+	background-repeat: no-repeat;
+}
+
+.iconeClipeMenor {
+	background-size: cover;
+	height: 15px !important;
+	width: 15px !important;
+	position: relative;
+	top: 50% !important;
+	background-image: url('imagens/clipe.png') !important;
+	background-repeat: no-repeat;
+}
+
+.display-upload-grande {
+	display: flex;
+	width: 100% !important;
+}
+
+.display-upload-pequeno {
+	display: none;
+}
+
+.ui-fileupload-cancel {
+	height: 30px !important;
+	width: 100px !important;
+}
+
+.ui-fileupload-buttonbar {
+	font-size: 18px !important;
+}
+
+.ui-fileupload-choose {
+	height: 30px !important;
+	width: 120px !important;
+}
+
+#divEnviarAnexarPequena {
+	display: none !important;
+}
+
+#divEnviarGrande {
+	display: flex;
+}
+
+#divAnexarGrande {
+	display: flex;
+}
+
+.logo-assinatura {
+	width: auto !important;
+	height: 150px !important;
+	margin-left: 10px !important;
+}
+
+.texto-assinatura {
+	color: #808080;
+	font-size: 25px;
+	margin: 0px 0px 0px 0px;
+}
+
+.texto-assinatura-cargo {
+	color: #808080;
+	font-size: 15px;
+	margin: 0px 0px 0px 0px;
+}
+
+#formEmail\:txtPara>ul {
+	width: 99% !important;
+}
+
+#formEmail\:txtCc>ul {
+	width: 99% !important;
+}
+
+#formEmail\:txtCco>ul {
+	width: 99% !important;
+}
+
+#formEmail\:txtAnexos>ul {
+	width: 99% !important;
+}
+
+.ui-autocomplete {
+	width: 100% !important;
+}
+
+#formEmail\:txtPara>ul>li.ui-autocomplete-input-token {
+	width: 300px !important;
+}
+
+#formEmail\:txtPara_input {
+	width: 300px !important;
+}
+
+#formEmail\:txtCc>ul>li.ui-autocomplete-input-token {
+	width: 300px !important;
+}
+
+#formEmail\:txtCc_input {
+	width: 300px !important;
+}
+
+#formEmail\:txtCco>ul>li.ui-autocomplete-input-token {
+	width: 300px !important;
+}
+
+#formEmail\:txtCco_input {
+	width: 300px !important;
+}
+
+@media screen and (min-width: 0px) and (max-width: 1200px) {
+	.ui-fileupload-choose {
+		height: 5px !important;
+		width: 5px !important;
+	}
+	.ui-fileupload-upload {
+		height: 30px !important;
+		width: 30px !important;
+	}
+	.ui-fileupload-cancel {
+		height: 30px !important;
+		width: 30px !important;
+	}
+	.display-upload-grande {
+		display: none !important;
+	}
+	.display-upload-pequeno {
+		display: flex !important;
+		width: 100% !important;
+	}
+	#divEnviarAnexarPequena {
+		display: flex !important;
+	}
+	#divEnviarGrande {
+		display: none;
+	}
+	#divAnexarGrande {
+		display: none;
+	}
+	.logo-assinatura {
+		width: auto !important;
+		height: 75px !important;
+		margin-left: 10px !important;
+	}
+	.texto-assinatura {
+		color: #808080;
+		font-size: 12px;
+		margin: 0px 0px 5px 0px;
+	}
+	.texto-assinatura-cargo {
+		color: #808080;
+		font-size: 10px;
+		margin: 0px 0px 5px 0px;
+	}
+}
+</style>
+
+</h:head>
+
+<h:body>
+
+	<h:form id="formEmail" enctype="multipart/form-data">
+		
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+
+		<div class="ui-g">
+			<p:dialog id="idDlgEmailGenerico" header="Emails"
+				widgetVar="dlgEmailGenerico" blockScroll="false" height="500">
+				<p:ajax event="open" update="formEmail:editor" />
+				<p:growl id="grownEmail" showDetail="true" />
+				<p:messages id="msgEmail" showDetail="true"
+					skipDetailIfEqualsSummary="true" closable="true">
+				</p:messages>
+
+				<div
+					style="display: flex; align-items: center; margin-bottom: 15px; width: 100%; flex-wrap: wrap;">
+
+					<div id="divEnviarGrande">
+						<p:commandButton value="Enviar"
+							onclick="PF('dlgEmailGenerico').hide();"
+							style="font-size: 15px !important;"
+							onstart="PF('dlgBarraEterna').show();"
+							oncomplete="PF('dlgBarraEterna').hide();"
+							actionListener="#{emailBean.sohEnviar}"
+							process="@this formEmail:txtPara formEmail:txtCc formEmail:txtCco formEmail:txtAssunto formEmail:txtAnexos formEmail:editor" />
+					</div>
+					<div id="divEnviarAnexarPequena" style="margin: 0px 10px 10px 0px">
+						<p:commandButton value="Enviar"
+							style="font-size: 15px !important;"
+							onstart="PF('dlgBarraEterna').show();"
+							oncomplete="PF('dlgBarraEterna').hide();"
+							actionListener="#{emailBean.sohEnviar}"
+							process="@this formEmail:txtPara formEmail:txtCc formEmail:txtCco formEmail:txtAssunto formEmail:editor" />
+
+						<p:commandLink onclick="PF('dlgAnexarAvancado').show();"
+							onstart="PF('dlgBarraEterna').show();"
+							oncomplete="PF('dlgBarraEterna').hide();" title="Anexar arquivos"
+							process="@this">
+							<p:graphicImage url="/imagens/clipe.png"
+								style="height: 25px; width: auto;  margin: 5px 10px 10px 0px !important;" />
+						</p:commandLink>
+
+					</div>
+
+
+
+					<div
+						style="display: flex; flex-direction: column; justify-content: center; width: 85%;">
+
+						<div style="display: flex; margin-bottom: 5px;">
+							<h:outputLabel id="lblPara" value="Para..."
+								styleClass="labelCabecalho" onclick="alert('nada');" />
+
+							<p:autoComplete id="txtPara"
+								value="#{emailBean.listaAutoCompleteEmailsSelecionados}"
+								completeMethod="#{emailBean.retornaAutoCompleteEmail}"
+								var="email" itemLabel="#{email}" itemValue="#{email}"
+								scrollHeight="250" multiple="true">
+
+								<p:column>
+									<span class="flag flag-#{email}"
+										style="width: 100px; height: 20px" />
+									<h:outputText
+										style="vertical-align: middle; margin-left: .5rem"
+										value="#{email}" />
+								</p:column>
+
+								<f:facet name="footer">
+									<div class="ui-fluid"
+										style="padding: 0.5rem 1rem 1rem 1rem; text-align: center;">
+										<p:commandButton id="btnIncluirEmail"
+											value="Incluir se não está na lista"
+											actionListener="#{emailBean.incluirNovoEmailNoAutocomplete('para')}"
+											process="@this formEmail:txtPara" update="formEmail:txtPara"
+											style="width: 200px !important;" />
+									</div>
+								</f:facet>
+							</p:autoComplete>
+						</div>
+
+
+						<div style="display: flex; margin-bottom: 5px;">
+							<h:outputLabel value="Cc..." styleClass="labelCabecalho" />
+
+							<p:autoComplete id="txtCc"
+								value="#{emailBean.listaAutoCompleteEmailsSelecionadosCC}"
+								completeMethod="#{emailBean.retornaAutoCompleteEmail}"
+								var="email" itemLabel="#{email}" itemValue="#{email}"
+								scrollHeight="250" multiple="true">
+
+								<p:column>
+									<span class="flag flag-#{email}"
+										style="width: 100px; height: 20px" />
+									<h:outputText
+										style="vertical-align: middle; margin-left: .5rem"
+										value="#{email}" />
+								</p:column>
+
+								<f:facet name="footer">
+									<div class="ui-fluid"
+										style="padding: 0.5rem 1rem 1rem 1rem; text-align: center;">
+										<p:commandButton id="btnIncluirEmailCc"
+											value="Incluir se não está na lista"
+											actionListener="#{emailBean.incluirNovoEmailNoAutocomplete('cc')}"
+											process="@this formEmail:txtCc" update="formEmail:txtCc"
+											style="width: 200px !important;" />
+									</div>
+								</f:facet>
+							</p:autoComplete>
+						</div>
+
+
+
+						<div style="display: flex; margin-bottom: 5px;">
+							<h:outputLabel value="Cco..." styleClass="labelCabecalho" />
+							<p:autoComplete id="txtCco"
+								value="#{emailBean.listaAutoCompleteEmailsSelecionadosCCO}"
+								completeMethod="#{emailBean.retornaAutoCompleteEmail}"
+								var="email" itemLabel="#{email}" itemValue="#{email}"
+								scrollHeight="250" multiple="true">
+
+								<p:column>
+									<span class="flag flag-#{email}"
+										style="width: 100px; height: 20px" />
+									<h:outputText
+										style="vertical-align: middle; margin-left: .5rem"
+										value="#{email}" />
+								</p:column>
+
+								<f:facet name="footer">
+									<div class="ui-fluid"
+										style="padding: 0.5rem 1rem 1rem 1rem; text-align: center;">
+										<p:commandButton id="btnIncluirEmailCco"
+											value="Incluir se não está na lista"
+											actionListener="#{emailBean.incluirNovoEmailNoAutocomplete('cco')}"
+											process="@this formEmail:txtCco" update="formEmail:txtCco"
+											style="width: 200px !important;" />
+									</div>
+								</f:facet>
+							</p:autoComplete>
+
+						</div>
+						<div style="display: flex; margin-bottom: 5px; width: 100%">
+							<h:outputLabel value="Assunto:" styleClass="labelCabecalho" />
+							<p:inputText id="txtAssunto" style="width: 101% !important;"
+								value="#{emailBean.emailAssunto}" />
+						</div>
+
+						<div
+							style="display: flex; margin-bottom: 5px; align-items: center;">
+							<h:outputLabel value="Anexos:" styleClass="labelCabecalho" />
+
+							<div style="display: flex; flex-direction: column; width: 100%;">
+								<p:autoComplete id="txtAnexos"
+									converter="conversorEmailNomeArquivo"
+									value="#{emailBean.arquivosAnexados}" var="anexo"
+									itemLabel="#{anexo.nome}" itemValue="#{anexo}"
+									scrollHeight="250" multiple="true" forceSelection="true">
+
+									<p:ajax event="itemUnselect" />
+
+								</p:autoComplete>
+							</div>
+						</div>
+					</div>
+
+					<div id="divAnexarGrande" style="margin: 0px 0px 0px 5px">
+						<p:commandLink onclick="PF('dlgAnexarAvancado').show();"
+							onstart="PF('dlgBarraEterna').show();"
+							oncomplete="PF('dlgBarraEterna').hide();" title="Anexar arquivos"
+							process="@this">
+							<p:graphicImage url="/imagens/clipe.png"
+								style="height: 40px; width: auto;  margin: 0px 0px 0px 5px !important;" />
+						</p:commandLink>
+					</div>
+
+					<p:dialog widgetVar="dlgAnexarAvancado"
+						header="Escolha e anexe os arquivos" blockScroll="false"
+						height="300" onShow="configElementoUpload();">
+
+						<div class="display-upload-grande">
+							<p:fileUpload id="upEnviarArquivos"
+								style="width: 100% !important;"
+								listener="#{emailBean.uploadArquivo}" uploadIcon="iconeClipe"
+								uploadLabel="Anexar" cancelIcon="iconeCancelar"
+								cancelLabel="Cancelar" mode="advanced" dragDropSupport="false"
+								multiple="true" oncomplete="PF('dlgAnexarAvancado').hide();"
+								oncancel="PF('dlgAnexarAvancado').hide();"
+								update="formEmail:txtAnexos" sizeLimit="300000000" />
+						</div>
+
+						<div class="display-upload-pequeno">
+							<p:fileUpload id="upEnviarArquivosMenor"
+								style="width: 100% !important;" uploadIcon="iconeClipeMenor"
+								cancelIcon="iconeCancelarMenor"
+								listener="#{emailBean.uploadArquivo}" mode="advanced"
+								dragDropSupport="false" multiple="true"
+								oncomplete="PF('dlgAnexarAvancado').hide();"
+								oncancel="PF('dlgAnexarAvancado').hide();"
+								update="formEmail:txtAnexos" sizeLimit="300000000" />
+
+						</div>
+					</p:dialog>
+
+				</div>
+
+
+				<p:defaultCommand target="formEmail:lnkEvitarEnter" />
+
+				<p:textEditor id="editor" value="#{emailBean.strEditor}"
+					secure="false" allowBlocks="true" allowFormatting="true"
+					allowImages="true" allowLinks="true" allowStyles="true"
+					style="background-image: none !important; background-color: #FFF !important; color: #000;" />
+
+
+				<h:panelGroup id="painelAssinatura">
+					<div
+						style="display: flex; background-image: none; background-color: #FFF; margin-top: -1px; align-items: center; flex-wrap: wrap;">
+						<img src="imagens/logo.jpg" class="logo-assinatura" />
+
+						<div
+							style="display: flex; flex-direction: column; padding-top: 10px; margin-left: 10px;">
+
+							<p class="texto-assinatura">
+								<strong>#{emailBean.emailAssinatNome}</strong>
+							</p>
+							<p class="texto-assinatura-cargo">
+								<strong>#{emailBean.emailAssinatCargo}</strong>
+							</p>
+							<p class="texto-assinatura">
+								<strong>#{emailBean.emailAssinatFone}</strong>
+							</p>
+
+							<a href="https://#{emailBean.emailAssinatSite}" target="_blank"
+								class="texto-assinatura" style="color: #E57308;">#{emailBean.emailAssinatSite}
+							</a>
+						</div>
+
+					</div>
+				</h:panelGroup>
+				<div
+					style="display: flex; background-image: none; background-color: #FFF; margin-top: -3px; padding-top: 7px; align-items: flex-start; flex-wrap: wrap; width: 100%; height: 100px; justify-content: flex-start">
+					<p:commandButton value="Alterar dados da assinatura"
+						onclick="PF('dlgAssinaturas').show();" />
+				</div>
+
+
+				<p:dialog widgetVar="dlgAssinaturas"
+					header="Alterar dados da assinatura">
+					<div
+						style="display: flex; justify-content: center; align-items: flex-end; width: 100%; flex-wrap: wrap;">
+						<div>
+							<h:outputLabel value="Nome:" />
+							<p:inputText id="txtAssNome"
+								value="#{emailBean.emailAssinatNome}" />
+						</div>
+						<div>
+							<h:outputLabel value="Cargo:" />
+							<p:inputText id="txtAssCargo"
+								value="#{emailBean.emailAssinatCargo}" />
+						</div>
+						<div>
+							<h:outputLabel value="Telefones:" />
+							<p:inputText id="txtAssFones"
+								value="#{emailBean.emailAssinatFone}" />
+						</div>
+						<div>
+							<h:outputLabel value="Website:" />
+							<p:inputText id="txtAssSite"
+								value="#{emailBean.emailAssinatSite}" />
+						</div>
+
+						<p:commandButton value="Salvar nesse email"
+							title="Salva alterações somente para o email atual"
+							oncomplete="PF('dlgAssinaturas').hide();"
+							process="@this formEmail:txtAssNome formEmail:txtAssCargo formEmail:txtAssFones formEmail:txtAssSite"
+							update="formEmail:painelAssinatura" />
+
+					</div>
+
+
+				</p:dialog>
+
+
+
+
+
+			</p:dialog>
+		</div>
+
+		<p:commandLink id="lnkEvitarEnter"
+			actionListener="#{emailBean.evitarEnter}" />
+
+	</h:form>
+
+	<script>
+		function configElementoUpload() {
+
+			//Botão SELECIONAR
+			document.getElementById('formEmail:upEnviarArquivos_label').innerHTML = '&nbsp;Selecionar';
+			document.getElementById('formEmail:upEnviarArquivos_label').style.fontSize = '15px';
+
+			//Botão ANEXAR
+			document
+					.querySelector("#formEmail\\:upEnviarArquivos > div.ui-fileupload-buttonbar.ui-widget-header.ui-corner-top > button.ui-fileupload-upload.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left > span.ui-button-text.ui-c").style.fontSize = "15px";
+			document
+					.querySelector("#formEmail\\:upEnviarArquivos > div.ui-fileupload-buttonbar.ui-widget-header.ui-corner-top > button.ui-fileupload-upload.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left > span.ui-button-icon-left.ui-icon.ui-c.pi.pi-paperclip").style.height = "15px";
+		}
+	</script>
+
+
+</h:body>
+</html>

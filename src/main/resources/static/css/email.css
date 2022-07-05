@@ -1,0 +1,194 @@
+@charset "ISO-8859-1";
+
+
+
+.iconeDePdf {
+	background-size: cover;
+	height: 15px !important;
+	width: 15px !important;
+	margin-right: 20px;
+	position: relative;
+	top: 2px;
+	background-image: url('../imagens/lixeiraBranca.png') !important;
+	background-repeat: no-repeat;
+}
+
+.corContasVencidas {
+	color: #F00 !important;
+}
+
+.corContasQuitadas {
+	color: #A9A9A9 !important;
+}
+
+
+.cor-pendencia-15-dias {
+	color: #4682B4 !important;
+	font-weight: bold;
+}
+
+
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 85% !important;
+	text-align: rigth !important;
+	margin-left: 10px !important;	
+}
+
+.semBorda {
+	border-style: none !important;
+	box-shadow: none !important;
+	
+	
+}
+
+th.titulo {
+	font-size: 15px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+	white-space: normal !important; /*Serve para que os textos do cabeçalho sejam quebrados, caso ultrapassem o espaço normal*/
+}
+
+td.corpo {
+	font-size: 11px !important;
+	white-space: normal !important;
+}
+
+td.corpo-negrito {
+	font-size: 12px !important;
+	font-weight: bold !important;
+	font-style: italic !important;
+	white-space: normal !important;
+}
+
+
+td.corpo-centro {
+	text-align: center !important;
+	white-space: normal !important;
+}
+
+td.corpo-direita {
+	text-align: right !important;
+	white-space: normal !important;
+}
+
+td.corpo-centro-vermelho {
+	text-align: center !important;
+	font-weight: bold;
+	font-size: 13px;
+	color: #F00;
+
+}
+
+
+.semBorda tr, .semBorda td {
+	/*border: none !important;*/
+	margin-left: 0px !important;
+}
+
+label {
+	display: block !important;
+	margin-left: 15px !important;
+}
+
+
+
+
+*/
+#formOrc\:tabCadPecas_reflowDD_label {
+	display: none !important;
+}
+
+.link-exclusao:hover {
+	background-color: #B22222 !important;
+}
+
+.ui-messages-warn {
+	background-image: none !important;
+	background-color: #F4A460 !important;
+	color: #000 !important;
+}
+
+.ui-messages-info {
+	background-image: none !important;
+	background-color: #8FBC8F !important;
+	color: #000 !important;
+}
+
+#formOrc\:tabMateriais_reflowDD_label {
+	display: none !important;
+}
+
+#formOrc\:tabServicos_reflowDD_label {
+	display: none !important;
+}
+
+.menu-principal {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 5px;
+	display: flex;
+	width: 59% !important;
+	flex-wrap: wrap;
+}
+
+.menu-principal-interno {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+	width: 39%;
+	padding: 5px;
+}
+
+/*Se tirar daqui, os selectOneMenu esourarão a largura, quando o dispositivo for android*/
+.ui-selectonemenu-items {
+	max-width: 300px !important;
+}
+
+
+
+/*CELULARES e TABLETS*/
+@media screen and (min-width: 0px) and (max-width: 1200px) {
+	.ui-widget, .ui-widget .ui-widget {
+		font-size: 70% !important;
+		text-align: rigth !important;
+		margin-left: 10px !important;
+	}
+
+
+	
+td.corpo-centro {
+	text-align: left !important;
+}
+
+
+td.corpo-centro-vermelho {
+	text-align: left !important;
+	font-weight: bold;
+	font-size: 13px;
+	color: #F00;
+}
+
+
+.menu-principal {
+	margin-top: 5px;
+	display: flex;
+	width: 100% !important;
+	flex-wrap: wrap;
+}
+
+.menu-principal-interno {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	padding: 5px;
+}
+
+
+
+
+}
+	

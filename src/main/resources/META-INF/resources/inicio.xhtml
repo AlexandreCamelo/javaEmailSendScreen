@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<meta name="viewport" content="width=device-width" />
+	<title>Home screen</title>
+
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+
+	<link rel="stylesheet" href="css/email.css" />
+		<link rel="icon" href="imagens/favicon64.png" />
+
+	<f:event listener="#{temasBean.mudaTema('sunny')}" type="preRenderView"></f:event>
+
+
+
+</h:head>
+
+
+<h:body>
+
+	<ui:include src="fragmentos/email.xhtml" />
+	<ui:include src="fragmentos/barraProgEterna.xhtml" />
+
+	<div
+		style="display: flex; background-color: #708090; width: 101%; margin: -10px 0px 0px -10px; color: #FFF; font-size: 20px; font-weight: bold; padding: 5px 0px 5px 0px;">
+		<p:outputLabel value="HOME SCREEN"></p:outputLabel>
+	</div>
+
+
+	<h:form id="formOrc">
+
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+
+		<p:messages id="msgs" widgetVar="widMsg" showDetail="true"
+			skipDetailIfEqualsSummary="true" closable="true">
+		</p:messages>
+
+
+
+		<ui:include id="incProgEterna" src="fragmentos/barraProgEterna.xhtml" />
+
+		<div
+			style="display: flex; width: 100%; align-items: center; flex-wrap: wrap; justify-content: space-between;">
+
+			<div class="menu-principal">
+				<p:commandLink actionListener="#{inicioBean.openEmailScreen}"
+				onstart="PF('dlgBarraEterna').show();"
+					oncomplete="PF('dlgBarraEterna').hide();" title="Abrir tela email"
+					immediate="true">
+					<p:graphicImage url="/imagens/email.png"
+						style="margin: 0px 0px 0px 1px !important;height: 30px !important; width: auto !important;" />
+				</p:commandLink>
+
+			</div>
+		</div>
+	</h:form>
+</h:body>
+
+</html>
